@@ -11,6 +11,9 @@ import {
     ReferenceInput,
     SelectInput,
     TextInput,
+    useNotify, 
+    useRefresh, 
+    useRedirect,
 } from 'react-admin';
 
 const ValtypeTitle = ({ record }) => {
@@ -43,12 +46,23 @@ export const ValtypeEdit = props => (
     </Edit>
 );
 
-export const ValtypeCreate = props => (
-    <Create {...props}>
+export const ValtypeCreate = props => {
+    const notify = useNotify();
+    const refresh = useRefresh();
+    const redirect = useRedirect();
+
+    const onSuccess = () => {
+        notify(`Data created`);
+        redirect('/assettypes');
+        refresh();
+    };
+
+    return (
+    <Create onSuccess={onSuccess} {...props}>
         <SimpleForm>
             <TextInput source="nama" />
             <TextInput source="kode" />
             <TextInput multiline source="deskripsi" />
         </SimpleForm>
     </Create>
-);
+)};
