@@ -16,68 +16,73 @@ import {
     useRedirect,
 } from 'react-admin';
 
-const UserTitle = ({ record }) => {
-    return <span>User {record ? `"${record.nama}"` : ''}</span>;
+const BarangTitle = ({ record }) => {
+    return <span>Barang {record ? `"${record.nama}"` : ''}</span>;
 };
 
-const UserFilters = [
+const BarangFilters = [
     <TextInput source="q" label="Search" alwaysOn />
 ];
 
-export const UserList = props => (
-    <List filters={UserFilters} {...props}>
+export const BarangList = props => (
+    <List filters={BarangFilters} {...props}>
         <Datagrid rowClick="edit">
-            <TextField source="nama" />
-            <ReferenceField source="department_id" reference="departments">
+            <ReferenceField source="value_type" reference="valtypes">
                 <TextField source="nama" />
             </ReferenceField>
-            <ReferenceField source="role_user" reference="roles">
+            <ReferenceField source="asset_type" reference="assettypes">
                 <TextField source="nama" />
             </ReferenceField>
-            <TextField source="email" />
+            <TextField source="serial_number" />
             <TextField source="updatedAt" />
             <EditButton />
         </Datagrid>
     </List>
 );
 
-export const UserEdit = props => (
-    <Edit title={<UserTitle/>} {...props}>
+export const BarangEdit = props => (
+    <Edit title={<BarangTitle/>} {...props}>
         <SimpleForm>
-            <TextInput source="nama" />
-            <ReferenceInput source="department_id" reference="departments">
+            <ReferenceInput source="value_type" reference="valtypes">
                 <SelectInput optionText="nama" />
             </ReferenceInput>
-            <ReferenceInput source="role_user" reference="roles">
+            <ReferenceInput source="asset_type" reference="assettypes">
                 <SelectInput optionText="nama" />
             </ReferenceInput>
-            <TextInput source="email" />
+            <TextInput source="serial_number" />
+            <ReferenceInput source="lokasi" reference="lokasis">
+                <SelectInput optionText="nama" />
+            </ReferenceInput>
+            <TextInput source="deskripsi" />
         </SimpleForm>
     </Edit>
 );
 
-export const UserCreate = props => {
+export const BarangCreate = props => {
     const notify = useNotify();
     const refresh = useRefresh();
     const redirect = useRedirect();
 
     const onSuccess = () => {
         notify(`Data created`);
-        redirect('/users');
+        redirect('/barangs');
         refresh();
     };
 
     return (
     <Create onSuccess={onSuccess} {...props}>
         <SimpleForm>
-            <TextInput source="nama" />
-            <ReferenceInput source="department_id" reference="departments">
+            <ReferenceInput source="value_type" reference="valtypes">
                 <SelectInput optionText="nama" />
             </ReferenceInput>
-            <ReferenceInput source="role_user" reference="roles">
+            <ReferenceInput source="asset_type" reference="assettypes">
                 <SelectInput optionText="nama" />
             </ReferenceInput>
-            <TextInput source="email" />
+            <TextInput source="serial_number" />
+            <ReferenceInput source="lokasi" reference="lokasis">
+                <SelectInput optionText="nama" />
+            </ReferenceInput>
+            <TextInput source="deskripsi" />
         </SimpleForm>
     </Create>
 )};
