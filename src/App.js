@@ -1,18 +1,23 @@
 import * as React from "react";
 import { fetchUtils, Admin, Resource, EditGuesser } from 'react-admin';
-import jsonServerProvider from 'ra-data-json-server';
 import simpleRestProvider from 'ra-data-simple-rest';
-import { UserList } from './layout/dashboardContent/Users';
-import { PostList, PostEdit, PostCreate } from './layout/dashboardContent/Posts';
-import { PostssList, PostssEdit, PostssCreate } from './layout/dashboardContent/Postss';
 import { ValtypeList, ValtypeEdit, ValtypeCreate } from './layout/dashboardContent/Valtypes';
 import { AssettypeList, AssettypeEdit, AssettypeCreate } from './layout/dashboardContent/Assettypes';
+import { DepartmentList, DepartmentEdit, DepartmentCreate } from './layout/dashboardContent/Departments';
+import { LokasiList, LokasiEdit, LokasiCreate } from './layout/dashboardContent/Lokasis';
+import { RoleList, RoleEdit, RoleCreate } from './layout/dashboardContent/Roles';
+import { UserList, UserEdit, UserCreate } from './layout/dashboardContent/Users';
+import { BarangList, BarangEdit, BarangCreate } from './layout/dashboardContent/Barangs';
 import Dashboard from "./layout/Dashboard";
 import CustomLoginPage from './CustomLoginPage';
 import { firebaseConfig } from "./FIREBASE_CONFIG";
 
 import PostIcon from '@material-ui/icons/Book';
+import DepartmentIcon from '@material-ui/icons/BusinessRounded';
 import UserIcon from '@material-ui/icons/Group';
+import LokasiIcon from '@material-ui/icons/LocationOn';
+import RoleIcon from '@material-ui/icons/DynamicFeed';
+import BarangIcon from '@material-ui/icons/Category';
 
 import {
   // FirebaseDataProvider,
@@ -73,10 +78,13 @@ function App() {
       authProvider={authProvider}
       disableTelemetry
     >
-      <Resource name="products" list={PostssList} edit={PostssEdit} create={PostssCreate} icon={PostIcon} />
       <Resource name="valtypes" list={ValtypeList} edit={ValtypeEdit} create={ValtypeCreate} icon={UserIcon} />
       <Resource name="assettypes" list={AssettypeList} edit={AssettypeEdit} create={AssettypeCreate} icon={PostIcon} />
-      {/* <Resource name="users" list={UserList} icon={UserIcon} /> */}
+      <Resource name="lokasis" options={{ label: 'Lokasi' }} list={LokasiList} edit={LokasiEdit} create={LokasiCreate} icon={LokasiIcon} />
+      <Resource name="departments" list={DepartmentList} edit={DepartmentEdit} create={DepartmentCreate} icon={DepartmentIcon} />
+      <Resource name="roles"  list={RoleList} edit={RoleEdit} create={RoleCreate} icon={RoleIcon} />
+      <Resource name="users" list={UserList} edit={UserEdit} create={UserCreate} icon={UserIcon} />
+      <Resource name="barangs" list={BarangList} edit={BarangEdit} create={BarangCreate} icon={BarangIcon} />
     </Admin>
     
   );
