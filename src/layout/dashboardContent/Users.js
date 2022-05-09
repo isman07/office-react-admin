@@ -19,7 +19,6 @@ import {
 
 import { Box, Button, Typography } from '@material-ui/core';
 import {QRCodeCanvas} from 'qrcode.react';
-import { useReactToPrint } from 'react-to-print';
 
 const UserTitle = ({ record }) => {
     return <span>User {record ? `"${record.nama}"` : ''}</span>;
