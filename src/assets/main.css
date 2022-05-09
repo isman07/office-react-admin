@@ -1,0 +1,15 @@
+table.custom-table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table.custom-table th {
+  background-color: #dddddd;
+}
+
+table.custom-table td, table.custom-table th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}

@@ -1,5 +1,6 @@
 import * as React from "react";
-import { fetchUtils, Admin, Resource, EditGuesser } from 'react-admin';
+import { fetchUtils, Admin, Resource, CustomRoutes, EditGuesser } from 'react-admin';
+import { Route } from 'react-router-dom'
 import simpleRestProvider from 'ra-data-simple-rest';
 import { ValtypeList, ValtypeEdit, ValtypeCreate } from './layout/dashboardContent/Valtypes';
 import { AssettypeList, AssettypeEdit, AssettypeCreate } from './layout/dashboardContent/Assettypes';
@@ -11,6 +12,7 @@ import { BarangList, BarangEdit, BarangCreate } from './layout/dashboardContent/
 import { PeminjamanList, PeminjamanEdit, PeminjamanCreate } from './layout/dashboardContent/Peminjamans';
 import Dashboard from "./layout/Dashboard";
 import CustomLoginPage from './CustomLoginPage';
+import LoanPage from "./LoanPage";
 import { firebaseConfig } from "./FIREBASE_CONFIG";
 
 import PostIcon from '@material-ui/icons/Book';
@@ -20,6 +22,8 @@ import LokasiIcon from '@material-ui/icons/LocationOn';
 import RoleIcon from '@material-ui/icons/DynamicFeed';
 import BarangIcon from '@material-ui/icons/Category';
 import PeminjamanIcon from '@material-ui/icons/AddShoppingCart';
+
+import './assets/main.css'
 
 import {
   // FirebaseDataProvider,
@@ -79,6 +83,14 @@ function App() {
       dataProvider={dataProvider}
       authProvider={authProvider}
       disableTelemetry
+      customRoutes={[
+        <Route
+            exact
+            path="/pinjaman-user/:userId"
+            component={props => <LoanPage { ...props } />}
+            noLayout
+        />
+      ]}
     >
       <Resource name="valtypes" list={ValtypeList} edit={ValtypeEdit} create={ValtypeCreate} icon={UserIcon} />
       <Resource name="assettypes" list={AssettypeList} edit={AssettypeEdit} create={AssettypeCreate} icon={PostIcon} />
