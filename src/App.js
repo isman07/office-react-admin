@@ -1,6 +1,6 @@
 import * as React from "react";
 import { fetchUtils, Admin, Resource, CustomRoutes, EditGuesser } from 'react-admin';
-import { Route } from 'react-router-dom'
+import { Route, useParams } from 'react-router-dom'
 import simpleRestProvider from 'ra-data-simple-rest';
 import { ValtypeList, ValtypeEdit, ValtypeCreate } from './layout/dashboardContent/Valtypes';
 import { AssettypeList, AssettypeEdit, AssettypeCreate } from './layout/dashboardContent/Assettypes';
@@ -68,12 +68,31 @@ const fetchJson = (url, options = {}) => {
   if (!options.headers) {
       options.headers = new Headers({ Accept: 'application/json' });
   }
+
+  let isCreatePinjaman = window.location.hash.includes('peminjamans/create')
+
+  if (isCreatePinjaman) {
+    let currentUrl = new URL(url);
+    let search_params = currentUrl.searchParams;
+
+    // add "topic" parameter
+    search_params.set('availOnly', 'true');
+
+    currentUrl.search = search_params.toString();
+
+    let new_url = currentUrl.toString();
+    url = new_url
+  }
+
+
   // add your own headers here
   options.headers.set('X-Custom-Header', 'foobar');
+
   return fetchUtils.fetchJson(url, options);
 }
 
-const dataProvider = simpleRestProvider('http://localhost:5000',fetchJson);
+const dataProvider = simpleRestProvider('http://localhost:5000', fetchJson);
+
 function App() {
   return (
     <Admin
