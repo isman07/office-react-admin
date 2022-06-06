@@ -10,6 +10,8 @@ import {
     TextInput,
     ReferenceField,
     ReferenceInput,
+    NumberInput,
+    DateInput,
     SelectInput,
     useNotify, 
     useRefresh, 
@@ -33,8 +35,10 @@ export const BarangList = props => (
             <ReferenceField source="asset_type" reference="assettypes">
                 <TextField source="nama" />
             </ReferenceField>
+            <TextField source="no_aset" />
             <TextField source="serial_number" />
-            <TextField source="updatedAt" />
+            <TextField source="purchase_date" />
+            <TextField source="purchase_price" />
             <EditButton />
         </Datagrid>
     </List>
@@ -50,6 +54,8 @@ export const BarangEdit = props => (
                 <SelectInput optionText="nama" />
             </ReferenceInput>
             <TextInput source="serial_number" />
+            <DateInput source="purchase_date" />
+            <NumberInput source="purchase_price" step={1000}/>
             <ReferenceInput source="lokasi" reference="lokasis">
                 <SelectInput optionText="nama" />
             </ReferenceInput>
@@ -79,6 +85,8 @@ export const BarangCreate = props => {
                 <SelectInput optionText="nama" />
             </ReferenceInput>
             <TextInput source="serial_number" />
+            <DateInput source="purchase_date" />
+            <NumberInput source="purchase_price" step={1000}/>
             <ReferenceInput source="lokasi" reference="lokasis">
                 <SelectInput optionText="nama" />
             </ReferenceInput>

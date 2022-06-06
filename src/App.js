@@ -10,6 +10,7 @@ import { RoleList, RoleEdit, RoleCreate } from './layout/dashboardContent/Roles'
 import { UserList, UserEdit, UserCreate } from './layout/dashboardContent/Users';
 import { BarangList, BarangEdit, BarangCreate } from './layout/dashboardContent/Barangs';
 import { PeminjamanList, PeminjamanEdit, PeminjamanCreate } from './layout/dashboardContent/Peminjamans';
+import { PengembalianList, PengembalianEdit, PengembalianCreate } from './layout/dashboardContent/Pengembalians';
 import Dashboard from "./layout/Dashboard";
 import CustomLoginPage from './CustomLoginPage';
 import LoanPage from "./LoanPage";
@@ -119,6 +120,7 @@ function App() {
       <Resource name="users" list={UserList} edit={UserEdit} create={UserCreate} icon={UserIcon} />
       <Resource name="barangs" list={BarangList} edit={BarangEdit} create={BarangCreate} icon={BarangIcon} />
       <Resource name="peminjamans" list={PeminjamanList} edit={PeminjamanEdit} create={PeminjamanCreate} icon={PeminjamanIcon} />
+      <Resource name="pengembalians" list={PengembalianList} edit={PengembalianEdit} create={PengembalianCreate} icon={PeminjamanIcon} />
     </Admin>
     
   );

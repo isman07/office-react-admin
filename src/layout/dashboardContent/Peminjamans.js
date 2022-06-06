@@ -42,6 +42,7 @@ export const PeminjamanList = props => (
                 <TextField source="nama" />
             </ReferenceField>
             <TextField source="tanggal_pinjam" />
+            <TextField source="tanggal_kembali" />
             <EditButton />
         </Datagrid>
     </List>
