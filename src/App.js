@@ -1,7 +1,8 @@
 import * as React from "react";
 import { fetchUtils, Admin, Resource, CustomRoutes, EditGuesser } from 'react-admin';
-import { Route, useParams } from 'react-router-dom'
+import { Route, useParams } from 'react-router-dom';
 import simpleRestProvider from 'ra-data-simple-rest';
+// import simpleRestProvider from 'ra-data-simple-rest';
 import { ValtypeList, ValtypeEdit, ValtypeCreate } from './layout/dashboardContent/Valtypes';
 import { AssettypeList, AssettypeEdit, AssettypeCreate } from './layout/dashboardContent/Assettypes';
 import { DepartmentList, DepartmentEdit, DepartmentCreate } from './layout/dashboardContent/Departments';
@@ -15,6 +16,7 @@ import Dashboard from "./layout/Dashboard";
 import CustomLoginPage from './CustomLoginPage';
 import LoanPage from "./LoanPage";
 import { firebaseConfig } from "./FIREBASE_CONFIG";
+// import {myDataProvider} from "./data/dataprovider"
 
 import PostIcon from '@material-ui/icons/Book';
 import DepartmentIcon from '@material-ui/icons/BusinessRounded';
@@ -101,6 +103,7 @@ function App() {
       dashboard={Dashboard}
       loginPage={CustomLoginPage}
       dataProvider={dataProvider}
+      // dataProvider={myDataProvider}
       authProvider={authProvider}
       disableTelemetry
       customRoutes={[
