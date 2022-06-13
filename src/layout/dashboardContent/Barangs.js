@@ -120,6 +120,9 @@ export const BarangCreate = props => {
                 <SelectInput optionText="nama" />
             </ReferenceInput>
             <TextInput source="deskripsi" />
+            <ImageInput source="pictures" label="Related pictures" accept="image/*" placeholder={<p>Drop your file here</p>}>
+                <ImageField source="img" title="title" />
+            </ImageInput>
         </SimpleForm>
     </Create>
 )};
