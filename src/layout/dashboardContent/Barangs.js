@@ -1,9 +1,14 @@
 import * as React from "react";
+import {Fragment} from "react";
 import { 
+    Toolbar,
     List,
     Datagrid,
     TextField,
+    SaveButton,
     EditButton,
+    DeleteButton,
+    BulkDeleteButton,
     Edit,
     Create,
     SimpleForm,
@@ -13,13 +18,33 @@ import {
     NumberInput,
     DateInput,
     SelectInput,
+    ImageInput,
+    ImageField,
     useNotify, 
     useRefresh, 
     useRedirect,
 } from 'react-admin';
 
+const PostBulkActionButtons = props => (
+    <Fragment>
+        <BulkDeleteButton {...props} undoable={false}/>
+    </Fragment>
+);
+
+
+const CustomToolbar = props => (
+    <Toolbar
+        {...props}
+        // sx={{ display: 'flex', justifyContent: 'space-between' }}
+        // classes={useStyles()}
+    >
+        <SaveButton {...props} />
+        <DeleteButton mutationMode="pessimistic" />
+    </Toolbar>
+);
+
 const BarangTitle = ({ record }) => {
-    return <span>Barang {record ? `"${record.nama}"` : ''}</span>;
+    return <span>Barang {record ? `"${record.deskripsi}"` : ''}</span>;
 };
 
 const BarangFilters = [
@@ -27,7 +52,7 @@ const BarangFilters = [
 ];
 
 export const BarangList = props => (
-    <List filters={BarangFilters} {...props}>
+    <List filters={BarangFilters} bulkActionButtons={<PostBulkActionButtons/>} {...props}>
         <Datagrid rowClick="edit">
             <ReferenceField source="value_type" reference="valtypes">
                 <TextField source="nama" />
@@ -40,13 +65,14 @@ export const BarangList = props => (
             <TextField source="purchase_date" />
             <TextField source="purchase_price" />
             <EditButton />
+            {/* <DeleteButton undoable={false} /> */}
         </Datagrid>
     </List>
 );
 
 export const BarangEdit = props => (
-    <Edit title={<BarangTitle/>} {...props}>
-        <SimpleForm>
+    <Edit title={<BarangTitle/>} undoable={false} {...props}>
+        <SimpleForm >
             <ReferenceInput source="value_type" reference="valtypes">
                 <SelectInput optionText="nama" />
             </ReferenceInput>
@@ -60,6 +86,9 @@ export const BarangEdit = props => (
                 <SelectInput optionText="nama" />
             </ReferenceInput>
             <TextInput source="deskripsi" />
+            <ImageInput source="pictures" label="Related pictures" accept="image/*" placeholder={<p>Drop your file here</p>}>
+                <ImageField source="img" title="title" />
+            </ImageInput>
         </SimpleForm>
     </Edit>
 );
