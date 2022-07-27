@@ -64,6 +64,7 @@ export const BarangList = props => (
             <TextField source="serial_number" />
             <TextField source="purchase_date" />
             <TextField source="purchase_price" />
+            <TextField source="img" />
             <EditButton />
             {/* <DeleteButton undoable={false} /> */}
         </Datagrid>
