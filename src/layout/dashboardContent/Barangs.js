@@ -64,7 +64,7 @@ export const BarangList = props => (
             <TextField source="serial_number" />
             <TextField source="purchase_date" />
             <TextField source="purchase_price" />
-            <TextField source="img" />
+            <ImageField source="img" />
             <EditButton />
             {/* <DeleteButton undoable={false} /> */}
         </Datagrid>
@@ -106,7 +106,7 @@ export const BarangCreate = props => {
     };
 
     return (
-    <Create onSuccess={onSuccess} {...props}>
+    <Create onSuccess={onSuccess} {...props} basePath="/barangs">
         <SimpleForm>
             <ReferenceInput source="value_type" reference="valtypes">
                 <SelectInput optionText="nama" />
@@ -121,7 +121,7 @@ export const BarangCreate = props => {
                 <SelectInput optionText="nama" />
             </ReferenceInput>
             <TextInput source="deskripsi" />
-            <ImageInput source="pictures" label="Related pictures" accept="image/*" placeholder={<p>Drop your file here</p>}>
+            <ImageInput source="file" label="Related pictures" accept="image/*" placeholder={<p>Drop your file here</p>}>
                 <ImageField source="img" title="title" />
             </ImageInput>
         </SimpleForm>
