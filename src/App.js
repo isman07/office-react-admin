@@ -94,7 +94,7 @@ const fetchJson = (url, options = {}) => {
   return fetchUtils.fetchJson(url, options);
 }
 
-const dataProvider = simpleRestProvider('http://localhost:5000', fetchJson);
+const dataProvider = simpleRestProvider(process.env.REACT_APP_BASE_URL, fetchJson);
 
 function App() {
   return (

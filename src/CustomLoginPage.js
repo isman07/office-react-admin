@@ -10,7 +10,7 @@ const uiConfig = {
   // Popup signin flow rather than redirect flow.
   signInFlow: 'popup',
   // Redirect to /signedIn after sign in is successful. Alternatively you can provide a callbacks.signInSuccess function.
-  signInSuccessUrl: '/',
+  signInSuccessUrl: '/#',
   // We will display Google and Facebook as auth providers.
   signInOptions: [
     {
@@ -29,6 +29,7 @@ const uiConfig = {
       // This gives you a Facebook Access Token. You can use it to access the Facebook API.
       const accessToken = credential.accessToken;
       console.log({result, user, accessToken});
+      window.location = "/#"
     }
   }
 };
