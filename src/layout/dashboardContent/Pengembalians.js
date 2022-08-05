@@ -85,7 +85,11 @@ export const PengembalianEdit = props => (
             </ReferenceInput>
             <PengInput disabled/>
             <DateInput source="tanggal_kembali" />
-            <TextInput source="kondisi" label="Kondisi"/>
+            <SelectInput source="kondisi" choices={[
+                { id:"Good Condition", name: "Good" },
+                { id:"Repair Condition", name: "Repair" },
+                { id:"Damage Condition", name: "Damage" },
+            ]}/>
             <TextInput source="remarks" label="Description" multiline/>
         </SimpleForm>
 
@@ -127,7 +131,11 @@ export const PengembalianCreate = props => {
             </ReferenceInput>
             <PengInput/>
             <DateInput source="tanggal_kembali" />
-            <TextInput source="kondisi" label="Kondisi"/>
+            <SelectInput source="kondisi" choices={[
+                { id:"Good Condition", name: "Good" },
+                { id:"Repair Condition", name: "Repair" },
+                { id:"Damage Condition", name: "Damage" },
+            ]}/>
             <TextInput source="remarks" label="Description" multiline/>
         </SimpleForm>
     </Create>
