@@ -63,6 +63,7 @@ export const BarangList = props => (
                 <TextField source="nama" />
             </ReferenceField>
             <TextField source="no_aset" />
+            <TextField source="deskripsi" />
             <TextField source="serial_number" />
             <TextField source="purchase_date" />
             <TextField source="purchase_price" />
